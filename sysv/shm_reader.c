@@ -37,8 +37,9 @@ int main(void) {
 
     /*
      * if we don't specify the address to attach the shared memory,
-     * address returned from shmat after each invocation will be different
-     * though the shm_id could be same
+     * virtual memory address returned from shmat after each invocation
+     * will be different.
+     * The shm_id will be the same for a given key.
      */
     shm_addr = shmat(shm_id, NULL, 0);
     if (shm_addr == (char *)SHM_ERROR) {
@@ -48,6 +49,9 @@ int main(void) {
 
     // reading from shared memory
     printf("Reading from shmem: shm_addr=%p msg=%s\n", shm_addr, shm_addr);
+
+    // detach the mapped memory
+    shmdt(shm_addr);
 
     return 0;
 }

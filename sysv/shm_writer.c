@@ -27,6 +27,11 @@ int main(int argc, char **argv) {
         exit(1);
     }
 
+    /*
+     * Creating the shared memory only from here.
+     * Reader and Cleaner would fail if shared memory with the
+     * key pointed by SHMKEY_FILE doesn't exist.
+     */
     shm_id = shmget(shm_key, SHMEM_SIZE, IPC_CREAT | SHMEM_FLAGS);
     if (shm_id == SHM_ERROR) {
         perror("shmget failed");

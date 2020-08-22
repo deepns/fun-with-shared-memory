@@ -14,6 +14,10 @@ int main(void) {
         exit(1);
     }
 
+    /*
+     * The size parameter matters only when we create a shm segment.
+     * Setting to 0 here just to show that it doesn't matter.
+     */
     shm_id = shmget(shm_key, 0, SHMEM_FLAGS);
     if (shm_id == SHM_ERROR) {
         perror("shmget failed");

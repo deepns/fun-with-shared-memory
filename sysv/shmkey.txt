@@ -1,0 +1,3 @@
+# Just a dummy file to generate the key for System V IPC calls.
+# The contents here has nothing to do with the key.
+# The key is generated based on the device minor number and the inode.
